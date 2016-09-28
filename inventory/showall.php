@@ -12,6 +12,7 @@
         <th>Item Description</th>
         <th>Item Count</th>
         <th>Item Price</th>
+        <th>Edit</th>
 	<th>Deletion</th>
       </tr>
     <?php
@@ -40,6 +41,7 @@
              "<td>". $row["itemDesc"]. "</td>" .
              "<td>". $row["itemCount"]. "</td>" .
              "<td>". $row["itemPrice"]. "</td>".
+	     "<td><a href=\"edit.php?id=". $row["itemID"] ."\">Edit</a></td>" .
 	     "<td><a href=\"delete.php?id=". $row["itemID"] ."\" onclick=\"return confirm('Are you sure?'); \">Delete</a></td>";
         echo "</tr>";
       }
