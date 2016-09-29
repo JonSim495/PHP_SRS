@@ -28,7 +28,7 @@
       if (mysqli_num_rows($result)>0){
 	      while ($row = mysqli_fetch_assoc($result)){
           echo "<h1>Edit item for " . $row["itemName"] . "</h1>";
-          echo "<p>Item Name: <input type=\"text\" name=\"itemName\" value=\"" . $row["itemID"] . "\" disabled /></p><br />";
+          echo "<p>Item ID: <input type=\"text\" name=\"itemID\" value=\"" . $row["itemID"] . "\" readonly /></p><br />";
     		  echo "<p>Item Name: <input type=\"text\" name=\"itemName\" value=\"" . $row["itemName"] . "\" required /></p><br />";
     		  echo "<p>Item Description: <br /><textarea rows=\"15\" cols=\"90\" name=\"itemDesc\">" . $row["itemDesc"] . "</textarea></p><br />";
     		  echo "<p>Item Count: <input type=\"text\" name=\"itemCount\" value=\"" . $row["itemCount"] . "\" required /></p><br />";
@@ -42,6 +42,7 @@
       mysqli_close($conn);
 ?>
 
+<input type="submit" value="Submit" />
 </form>
 </body>
 <html>

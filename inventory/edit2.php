@@ -15,6 +15,10 @@
     $itemCount = $_POST['itemCount'];
     $itemPrice = $_POST['itemPrice'];
 
+    // Authentication
+    $servername = "localhost";
+    $username = "";
+    $password = "";
     // Create connection
     $conn = mysqli_connect($servername, $username, $password);
     // Check connection
@@ -23,12 +27,7 @@
     }
 
     //attempt sql update to update table
-    $sql="UPDATE `swe30010`.`Inventory`
-          SET itemName = $itemName,
-              itemDesc = $itemDesc,
-              itemCount = $itemCount,
-              itemPrice = $itemPrice
-          WHERE itemID=$itemID;";
+    $sql="UPDATE `swe30010`.`Inventory` SET itemName = '$itemName', itemDesc = '$itemDesc', itemCount = $itemCount, itemPrice = $itemPrice WHERE itemID=$itemID; ";
 
     // Run the query
     if (mysqli_query($conn, $sql)) {
