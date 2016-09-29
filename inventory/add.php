@@ -18,17 +18,17 @@
 
 	      // authentication to the database
 	      $servername = "localhost";
-	      $username = ""; 
+	      $username = "";
 	      $password = "";
 
 	      // Create connection
 	      $conn = mysqli_connect($servername, $username, $password);
 	      // Check connection
 	      if (!$conn) {
-		  die("Connection failed: " . $conn->connect_error);
+		        die("Connection failed: " . $conn->connect_error);
 	      }
 	      // Attempt query to add
-	      $sql = "INSERT INTO `swe30010`.`Inventory` (itemID, itemName, itemDesc, itemCount, itemPrice) 
+	      $sql = "INSERT INTO `swe30010`.`Inventory` (itemID, itemName, itemDesc, itemCount, itemPrice)
 	      VALUES(DEFAULT,'$itemName', '$itemDesc', '$itemCount', '$itemPrice')";
 	      if (mysqli_query($conn, $sql)){
 		    echo "Record added successfully";
