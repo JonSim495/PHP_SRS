@@ -1,26 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <title>Sales Record </title>
+<title>Inventory Data</title>
 </head>
 
 <body>
-  <form action="add.php" method="post">
-    <h2>Sales Record</h2>
-    <!--
-    Using auto increment for itemid, no need for this line
-    <p>Item ID: <input type="text" name="itemID" value="" /></p>
-    <br />
-    -->
-    <p>Sales ID : <input type="text" name="salesId" value="" /></p>
-    <br />
-    <p>Item: <input type="text" name="item="" /></p>
-    <br />
-    <p>Amount: <input type="text" name="amount" value="" /></p>
-    <br />
-    
-    <input type="submit" value="Add">
-  </form>
+<form action="inventory.php">
+<p>Inventory Data</p>
+Item ID: <input type="text" name="itemID" value="" >
+<br>
+Item Name: 
+<input type="text" name="itemName" value="" >
+<br>
+Item Description: 
+<input type="text" name="itemDesc" value="" >
+<br>
+Item Count: 
+<input type="text" name="itemCount" value="" >
+<br>
+Item Price: 
+<input type="text" name="itemPrice" value="" >
+<br>
+<input type="submit" value="Add">
+</form>
 </body>
 </html>
