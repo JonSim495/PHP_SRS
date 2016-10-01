@@ -4,18 +4,41 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <title>Sales Record </title>
 </head>
+<script type="text/javascript" >
+var counter = 1;
+var limit = 15;
+    function inAdd(divName){
+    if (counter == limit)
+	{
+		alert("You have reached the limit of adding " + counter + " inputs");
+	}
+	else
+	{
+		var newdiv = document.createElement('div');
+		newdiv.innerHTML = "<select name='itemName' size='1' value=''><option value='test'>Testing 1</option><option value='test'>Testing 2</option></select><p>";
+		document.getElementById(divName).appendChild(newdiv);
+		counter++;
+	}
+}
+    </script>
 
 <body>
   <form action="add.php" method="post">
     <h2>Sales Record</h2>
-    <!--
-    Using auto increment for itemid, no need for this line
-    <p>Item ID: <input type="text" name="itemID" value="" /></p>
-    <br />
-    -->
     <p>Sales ID : <input type="text" name="salesId" value="" /></p>
     <br />
-    <p>Item: <input type="text" name="item="" /></p>
+    
+    <div id="item">
+    <p>Item: 
+    <select name="salesID" size="1" value="">
+		<option value="test" selected>testing how long can goe</option>
+        <option value="test">testing how long can go 2</option>
+    </select>
+    
+    <input type="button" value="increase" onclick="inAdd('item')" />
+    
+    </p>
+    </div>
     <br />
     <p>Amount: <input type="text" name="amount" value="" /></p>
     <br />
