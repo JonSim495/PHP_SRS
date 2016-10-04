@@ -56,7 +56,6 @@
 		        echo "<td>" . $row2["itemName"] . "</td>";
 		        echo "<td>" . $row2["itemCount"] . "</td>";
 			$total += $row2["itemCount"] * $row2["itemPrice"];
-			$count--;
 			echo "<td class=\"rem\" id=\"" . $idnum++ . "\" rowspan=\"\">" . $total . "</td>";
 			// will edit it later in jscript
 			echo "</tr>";
