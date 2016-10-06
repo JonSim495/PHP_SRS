@@ -1,4 +1,4 @@
--<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
       <meta charset="utf-8" />
@@ -7,6 +7,9 @@
   <body>
  
     <?php
+      //get info
+      $id = $_GET['id'];
+
       $servername = "localhost";
       $username = "";
       $password = "";
@@ -16,16 +19,24 @@
       if (!$conn) {
           die("Connection failed: " . $conn->connect_error);
       }
+
       // Attempt query
-      $sql = "DELETE FROM database WHERE id = $id ";
-      $result = mysqli_query($conn, $sql);
-      if (mysqli_num_rows($result) > 0) {
-    // output data of each row
-   echo "Record updated successfully";
-    } else {
-        echo "0 results";
-    }
-      //Close connection
+      $sql = "DELETE FROM `swe30010`.`SalesItem` WHERE salesID = " . $id .";";
+      
+      if (mysqli_query($conn, $sql)) {
+        echo "Record " . $id . " deleted successfully from sales item <br />";
+      } else {
+         echo "Error: " . $sql . "<br />" . mysqli_error($conn);
+      }
+      $sql = "DELETE FROM `swe30010`.`Sales` WHERE salesID = " . $id .";";
+      
+      if (mysqli_query($conn, $sql)) {
+        echo "Record " . $id . " deleted successfully from sales";
+      } else {
+         echo "Error: " . $sql . "<br />" . mysqli_error($conn);
+      }
+
+      //close connection
       mysqli_close($conn);
     ?>
   </table>
