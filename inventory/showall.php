@@ -48,7 +48,7 @@
     } else {
         echo "0 results";
     }
-
+        
       //Close connection
       mysqli_close($conn);
     ?>
