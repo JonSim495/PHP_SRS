@@ -40,7 +40,7 @@
 	     out += name[0] + inn[0]; //items and amount of purchase
 	     out += "<td rowspan=\"" + count + "\">" + totalAmount + "</td>";
 	     out += "<td rowspan=\"" + count + "\">Edit</td>";
-	     out += "<td rowspan=\"" + count + "\">Delete</td>";
+	     out += "<td rowspan=\"" + count + "\"><a href=\"delete.php?id=" + salesID + "\">Delete</a></td>";
 
 	     if (count>1){
 	         for (var i=1; i<name.length; i++){
