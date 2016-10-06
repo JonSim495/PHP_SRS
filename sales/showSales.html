@@ -17,8 +17,9 @@
       xmlhttp.send(); 
 
       function go(arr){
-         var out = "<tr>";
+         var out = "";
 	 for (var i=0; i<arr.length; i++){
+	     out += "<tr>";
 	     var salesID = arr[i].salesID;
 	     var salesDate = arr[i].salesDate;
 	     var invoice = arr[i].invoice;
@@ -43,17 +44,18 @@
 	     out += "<td rowspan=\"" + count + "\"><a href=\"delete.php?id=" + salesID + "\">Delete</a></td>";
 
 	     if (count>1){
-	         for (var i=1; i<name.length; i++){
+	         for (var k=1; k<name.length; k++){
 		     out += "</tr><tr>";
-		     out += name[i] + inn[i];
+		     out += name[k] + inn[k];
 		 }
 	     }
 	     out += "</tr>";
 	 }
+	 
          document.getElementById("sales").innerHTML = out;
       }
 
-      window.onload = go(myArr);
+//      window.onload = go;
     </script>
   </head>
 
