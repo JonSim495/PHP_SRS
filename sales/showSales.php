@@ -15,7 +15,10 @@
 	    <th>Date</th>
 	    <th>Items</th>
 	    <th>Amount of Purchase</th>
+	    <th>Each Amount</th>
 	    <th>Total Amount</th>
+	    <th>Edit</th>
+	    <th>Deletion</th>
 	</tr>
     </thead>
 
@@ -37,7 +40,7 @@
 	    if (mysqli_num_rows($result) > 0){
    	        while ($row = mysqli_fetch_assoc($result)){
 		    // second query on sales item
-                    $sql = "SELECT I.itemName, SI.itemCount, I.itemPrice
+                    $sql = "SELECT DISTINCT I.itemName, SI.itemCount, I.itemPrice
 		            FROM `swe30010`.`Inventory` I, `swe30010`.`SalesItem` SI, `swe30010`.`Sales` S 
 			    WHERE SI.salesID=" . $row["salesID"] ." AND I.itemID=SI.itemID
 		           ";
@@ -47,7 +50,7 @@
 		    echo "<tr>";
 		    echo "<td rowspan=\"" .$count. "\">" . $row["salesID"] . "</td>";
 		    echo "<td rowspan=\"" .$count. "\">" . $row["invoice"] . "</td>";
-		    echo "<td rowspan=\"" .$count. "\">" . $row["date"] . "</td>";
+		    echo "<td rowspan=\"" .$count. "\">" . $row["salesDate"] . "</td>";
 
 		    $total = 0;
 		    $idnum=1;
@@ -55,8 +58,8 @@
 		    while ($row2 = mysqli_fetch_assoc($result2)){
 		        echo "<td>" . $row2["itemName"] . "</td>";
 		        echo "<td>" . $row2["itemCount"] . "</td>";
-			$total += $row2["itemCount"] * $row2["itemPrice"];
-			echo "<td class=\"rem\" id=\"" . $idnum++ . "\" rowspan=\"\">" . $total . "</td>";
+			$each = $row2["itemCount"] * $row2["itemPrice"];
+			echo "<td class=\"total\" id=\"" . $idnum++ . "\" rowspan=\"\">" . $each. "</td>";
 			// will edit it later in jscript
 			echo "</tr>";
 			echo "<tr>";
