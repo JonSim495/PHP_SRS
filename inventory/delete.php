@@ -22,13 +22,19 @@
 	      // Check connection
 	      if (!$conn) {
 		  die("Connection failed: " . $conn->connect_error);
+          echo '<meta http-equiv="refresh" content="3; URL=https://swe30010.tzhongyan.com/test/inventory/showall.php">';
+
 	      }
 	      // Attempt query to add
 	      $sql = "DELETE FROM `swe30010`.`Inventory` where itemID=$itemID";
 	      if (mysqli_query($conn, $sql)){
-		    echo "Record " . $itemID . "remove successfully";
+		    echo "Record " . $itemID . " removed successfully";
+            echo '<meta http-equiv="refresh" content="3; URL=https://swe30010.tzhongyan.com/test/inventory/showall.php">';
+
 	      } else {
 		    echo "Error: " . $sql . "<br />" . mysqli_error($conn);
+            echo '<meta http-equiv="refresh" content="3; URL=https://swe30010.tzhongyan.com/test/inventory/showall.php">';
+
 	      }
 
 	      //remember to close connection

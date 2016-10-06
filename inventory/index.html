@@ -1,16 +1,66 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+<html lang = "en-US">
+    <head>
+        <meta charset = "utf-8" />
+        <meta name = "viewport" content = "width = device - width, initial-scale=1" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link ref = "stylesheet" type = "text/css" href = "style.css" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <style>
+            body {
+                background-color: aliceblue;
+                background-image: url("images/capture_01.jpg");
+            } 
+            .container {
+                height: 800px;
+                box-shadow: 3px 3px 3px rgba(0, 0, 0, .5);
+                background-color: white;
+            }
+            
+            .navbar {
+                width: 720px;
+            }
+            
+            
+        </style>
+        
+    </head>
+    <body>
+        
 
-<head>
-    <meta charset="utf-8" />
-    <title>People's Health Pharmacy - Sales Reporting System</title>
-</head>
+        <div class = "container">
+            <div class = "1">
+                <h1>People Health Pharmacy</h1>
+                <p>Home</p>
+            </div>
+            <nav class="navbar navbar-default">
+              <div class="container-fluid">
+                <div class="navbar-header">
+                  <a class="navbar-brand" href="home.html">PH Pharmacy</a>
+                </div>
+                <ul class="nav navbar-nav">
+                  <li class="active"><a href="home.html">Home</a></li>
+                  <li><a href="about.html">About Us</a></li>
+                  <li><a href="contact.html">Contact Us</a></li>
+                  <li><a href="#"></a></li>
+                </ul>
+              </div>
+            </nav>
+            <div>
+                <div class = "row">
+                    <div class = "col-md-6" id = "col1">
+                        <a href = "showall.php"><button type = "button" class = "btn btn-default">Show All</button></a>
+                    </div>
+                    <div class = "col-md-6" id = "col2">
+                        <a href = "Inventory_Add_Page.html"><button type = "button" class = "btn btn-default">Add Inventory</button></a>
+                    </div>
+                    
+                </div>
 
-<body>
-    <ul>
-        <li><a href="showall.php">Show all</a></li>
-        <li><a href="Inventory_Add_Page.html">Add inventory</a></li>
-    </ul>
-</body>
+            </div> 
+        </div>
 
+        
+    </body>   
 </html>

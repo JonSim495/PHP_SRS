@@ -24,6 +24,8 @@
     // Check connection
     if (!$conn) {
         die("Connection failed: " . $conn->connect_error);
+        echo '<meta http-equiv="refresh" content="3; URL=https://swe30010.tzhongyan.com/test/inventory/showall.php">';
+
     }
 
     //attempt sql update to update table
@@ -32,8 +34,11 @@
     // Run the query
     if (mysqli_query($conn, $sql)) {
       echo "Record updated successfully";
+      echo '<meta http-equiv="refresh" content="3; URL=https://swe30010.tzhongyan.com/test/inventory/showall.php">';
+
     } else {
         echo "Error updating record: " . mysqli_error($conn);
+        echo '<meta http-equiv="refresh" content="3; URL=https://swe30010.tzhongyan.com/test/inventory/showall.php">';
     }
 
     mysqli_close($conn);
