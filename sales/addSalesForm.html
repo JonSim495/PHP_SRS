@@ -19,13 +19,13 @@
     
     var count=1;
     function more(arr){
-        var out = "Item " + count++ + ": <select name=\"itemID[]\" form=\"sales\" required>";
+        var out = "Item " + count++ + ": <select name=\"item[id][]\" form=\"sales\" required>";
 	out += "<option value=\"\">Please Select</option>";
 	for (var i=0; i<arr.length; i++){
-	    out+="<option value=\" + arr[i].itemID + \">" + arr[i].itemName + "</option>";
+	    out+="<option value=\"" + arr[i].itemID + "\">" + arr[i].itemName + "</option>";
 	}
 
-	out+="Amount bought: <input type=\"number\" name=\"itemCount[]\" min=\"1\" required>"
+	out+="Amount bought: <input type=\"number\" name=\"item[count][]\" min=\"1\" required>"
         out+="</select><br />"
 	document.getElementById("forms").innerHTML+=out;
     }
