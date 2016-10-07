@@ -31,8 +31,7 @@
 	$salesID = $data["Auto_increment"];
 
 	// Add into Sales table
-	$sql = "INSERT INTO `swe30010`.`Sales` (salesID, salesDate, invoice)
-	        VALUES($salesID, '$date', '$invoice')";
+	$sql = "INSERT INTO `swe30010`.`Sales` (salesID, salesDate, invoice) VALUES($salesID, '$date', '$invoice')";
 	
         $if (mysqli_query($conn, $sql)) {
 	    echo "<h1>Record added into Sales table.</h1>";
