@@ -50,8 +50,6 @@
                     echo "Error: " . $sql . "<br />" . mysqli_error($conn);
                   }
 
-                  /* Manipulate with $result, should have rows */
-
                   //remember to close connection
                   mysqli_close($conn);
 

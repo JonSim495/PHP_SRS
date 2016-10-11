@@ -38,8 +38,8 @@
 
               // authentication to the database
               $servername = "localhost";
-              $username = "swe30010";
-              $password = "#EDC4rfv";
+              $username = "";
+              $password = "";
 
               // Create connection
               $conn = mysqli_connect($servername, $username, $password);

@@ -37,12 +37,11 @@
               echo '<meta http-equiv="refresh" content="3; URL=showall.php">';
 
               }
-              // Attempt query to add
+              // Attempt query to delete
               $sql = "DELETE FROM `swe30010`.`Inventory` where itemID=$itemID";
               if (mysqli_query($conn, $sql)){
                 echo "Record " . $itemID . " removed successfully";
                 echo '<meta http-equiv="refresh" content="3; URL=showall.php">';
-
               } else {
                 echo "Error: " . $sql . "<br />" . mysqli_error($conn);
                 echo '<meta http-equiv="refresh" content="3; URL=showall.php">';
