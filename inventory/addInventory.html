@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset = "utf-8" />
+        <meta name = "viewport" content = "width = device - width, initial-scale=1" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link href="../style/style.css" rel="stylesheet"/>
+        <title>Inventory Data</title>
+</head>
+
+<body>
+        <div class = "container">
+                <div class = "1">
+                    <h1>People Health Pharmacy</h1>
+                    <p id = "inventory_data">Inventory Data</p>
+                </div>
+                <nav class="navbar navbar-default">
+                  <div class="container-fluid">
+                    <div class="navbar-header">
+                      <a class="navbar-brand" href="https://swe30010.tzhongyan.com/test/index.html">PH SRS</a>
+                    </div>
+                    <ul class="nav navbar-nav">
+                      <li class="active"><a href="home.html">Home</a></li>
+                      <li><a href="about.html">About Us</a></li>
+                      <li><a href="contact.html">Contact Us</a></li>
+                      <li><a href="#"></a></li>
+                    </ul>
+                  </div>
+                </nav>
+
+
+      <form action="add.php" method="post" id="form1">
+        <h2>Inventory Data</h2>
+        <!--
+        Using auto increment for itemid, no need for this line
+        <p>Item ID: <input type="text" name="itemID" value="" /></p>
+        <br />
+        -->
+          <div class = "form-group">
+            <label for = "itemname">Item Name: <input type="text"  id = "itemname" name="itemName" value="" class = "form-control" placeholder = "Item Name" /></label>
+          </div>
+          <div class = "form-group">
+              <label>Item Description: <input type="text" id = "itemDesc" name="itemDesc" value="" class = "form-control" placeholder = "Item Description" /></label>
+          </div>
+          <div class = "form-group">
+              <label>Item Count: <input type="text" name="itemCount" value="" class = "form-control" placeholder = "Item Count" /></label>
+          </div>
+          <div class = "form-group">
+              <label>Item Price: <input type="text" name="itemPrice" value="" class = "form-control" placeholder = "Item Price"/></label>
+          </div>
+          <button type = "submit" class="btn btn-default btn-lg">Submit</button>
+      </form>
+
+
+
+    </div>
+</body>
+</html>
