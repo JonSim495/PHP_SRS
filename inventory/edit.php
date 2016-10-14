@@ -20,12 +20,12 @@
              <nav class="navbar navbar-default">
                   <div class="container-fluid">
                     <div class="navbar-header">
-                      <a class="navbar-brand" href="home.html">PH Pharmacy</a>
+                      <a class="navbar-brand" href="../index.html">PHP Pharmacy</a>
                     </div>
                     <ul class="nav navbar-nav">
-                      <li class="active"><a href="home.html">Home</a></li>
-                      <li><a href="about.html">About Us</a></li>
-                      <li><a href="contact.html">Contact Us</a></li>
+                      <li><a href="../index.html">Home</a></li>
+                      <li><a href="../about.html">About Us</a></li>
+                      <li><a href="../contact.html">Contact Us</a></li>
                       <li><a href="#"></a></li>
                     </ul>
                   </div>

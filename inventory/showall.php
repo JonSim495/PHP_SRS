@@ -6,7 +6,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <link href="style/style.css" rel="stylesheet"/>
+        <link href="../style/style.css" rel="stylesheet"/>
       <title>Sales module</title>
   </head>
   <body>
@@ -18,12 +18,12 @@
              <nav class="navbar navbar-default">
                   <div class="container-fluid">
                     <div class="navbar-header">
-                      <a class="navbar-brand" href="https://swe30010.tzhongyan.com/test/index.html">PH SRS</a>
+                      <a class="navbar-brand" href="../index.html">PHP SRS</a>
                     </div>
                     <ul class="nav navbar-nav">
-                      <li class="active"><a href="home.html">Home</a></li>
-                      <li><a href="about.html">About Us</a></li>
-                      <li><a href="contact.html">Contact Us</a></li>
+                      <li><a href="../index.html">Home</a></li>
+                      <li><a href="../about.html">About Us</a></li>
+                      <li><a href="../contact.html">Contact Us</a></li>
                       <li><a href="#"></a></li>
                     </ul>
                   </div>

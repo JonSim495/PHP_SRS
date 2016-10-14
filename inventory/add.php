@@ -14,10 +14,23 @@
 
     <div class = "container">
           <div>
-              <h1>People Health Pharmacy</h1>
+              <h1>Add Status</h1>
               <p id = "inventory_data">Add</p>
           </div>
 
+            <nav class="navbar navbar-default">
+              <div class="container-fluid">
+                <div class="navbar-header">
+                  <a class="navbar-brand" href="index.html">PHP SRS</a>
+                </div>
+                <ul class="nav navbar-nav">
+                  <li class="active"><a href="index.html">Home</a></li> <!-- Remember to switch to active class on the page you're in -->
+                  <li><a href="about.html">About Us</a></li>
+                  <li><a href="contact.html">Contact Us</a></li>
+                  <li><a href="#"></a></li>
+                </ul>
+              </div>
+            </nav>
 
             <p>Status Report</p>
             <p>
