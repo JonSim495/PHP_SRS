@@ -29,8 +29,6 @@
                 </ul>
               </div>
             </nav>
-          </div>
-
 
           <p>
           <?php
@@ -72,5 +70,6 @@
             ?>
           </p>
     </div>
+  </div>
 </body>
 </html>
