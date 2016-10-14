@@ -31,7 +31,7 @@
                 </nav>
 
 
-      <form action="add.php" method="post" id="form1">
+      <form action="add.php" method="post"  id="form2">
         <h2>Inventory Data</h2>
         <!--
         Using auto increment for itemid, no need for this line
@@ -40,14 +40,14 @@
         -->
           <div class = "form-group">
             <label for = "itemname">Item Name: <input type="text"  id = "itemname" name="itemName" value="" class = "form-control" placeholder = "Item Name" /></label>
-          </div>
-          <div class = "form-group">
+	      </div>
+		  <div>
               <label>Item Description: <textarea type="text" id = "itemDesc" name="itemDesc" value="" class = "form-control" placeholder = "Item Description" rows="15" cols="90" ></textarea></label>
-          </div>
-          <div class = "form-group">
+		  </div>
+		  <div>
               <label>Item Count: <input type="text" name="itemCount" value="" class = "form-control" placeholder = "Item Count" /></label>
-          </div>
-          <div class = "form-group">
+		  </div>
+		  <div>
               <label>Item Price: <input type="text" name="itemPrice" value="" class = "form-control" placeholder = "Item Price"/></label>
           </div>
           <button type = "submit" class="btn btn-default btn-lg">Submit</button>
@@ -58,3 +58,4 @@
     </div>
 </body>
 </html>
+
