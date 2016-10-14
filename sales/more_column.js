@@ -27,3 +27,5 @@ document.getElementById("forms").innerHTML+=out;
 function moreItem(){
     more(myArr);
 }
+
+window.onload = moreItem;
