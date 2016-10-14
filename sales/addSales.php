@@ -10,16 +10,16 @@
       // get post item
     	$invoice = $_POST["invoice"];
     	$date = $_POST["date"];
-    	$item = $_POST["item"];
+    	$itemID = $_POST["id"];
+		$itemCount = $_POST["count"];
 
     	// authentication to the database
     	$servername = "localhost";
     	$username = "";
     	$password = "";
-      $database = "swe30010";
 
     	//Create connection
-    	$conn = mysqli_connect($servername, $username, $password, $database);
+    	$conn = mysqli_connect($servername, $username, $password);
 
     	// Check connection
     	if (!$conn) {
@@ -27,13 +27,20 @@
     	}
 
     	//Get next sales ID from auto increment
-    	$result = mysqli_query($conn, "SHOW TABLE STATUS LIKE \'Sales\'");
+    	$result = mysqli_query($conn, "USE swe30010;SHOW TABLE STATUS WHERE name='Sales';");
     	$data = mysqli_fetch_assoc($result);
-    	$salesID = $data["Auto_increment"];
+
+		echo "data=".$data."<br />";
+
+    	$salesID = $data['Auto_increment'];
+		
+		echo "salesID=".$salesID."<br />";
 
     	// Add into Sales table
     	$sql = "INSERT INTO `swe30010`.`Sales` (salesID, salesDate, invoice) VALUES($salesID, '$date', '$invoice')";
+		echo $sql;
 
+/*
       $if (mysqli_query($conn, $sql)) {
     	    echo "<h1>Record added into Sales table.</h1>";
     	} else {
@@ -53,7 +60,7 @@
           echo "<p>Item $itemID added into Sales table.</p>";
     	    }
     	}
-
+*/
         mysqli_close($conn);
     ?>
   </body>

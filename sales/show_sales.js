@@ -34,8 +34,8 @@ totalAmount += items[j].itemPrice * items[j].itemCount;
 
  out += name[0] + inn[0]; //items and amount of purchase
  out += "<td rowspan=\"" + count + "\">" + totalAmount + "</td>";
- out += "<td rowspan=\"" + count + "\">Edit</td>";
- out += "<td rowspan=\"" + count + "\"><a href=\"delete.php?id=" + salesID + "\">Delete</a></td>";
+ out += "<td rowspan=\"" + count + "\"><a href=\"edit.php?id=" + salesID + "\">Edit</a></td>";
+ out += "<td rowspan=\"" + count + "\"><a href=\"delete.php?id=" + salesID + "\" onclick=\"return confirm('Are you sure?');\">Delete</a></td>";
 
  if (count>1){
      for (var k=1; k<name.length; k++){
