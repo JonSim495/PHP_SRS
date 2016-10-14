@@ -40,10 +40,10 @@ Done by Konstantin,
                 </ul>
               </div>
             </nav>
-          </div>
 
         <!-- Body item goes here -->
 
+          </div>
     </body>
 </html>
 
