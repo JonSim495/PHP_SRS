@@ -2,58 +2,53 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
+    <meta name = "viewport" content = "width = device - width, initial-scale=1" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="../style/style.css" rel="stylesheet"/>
     <title>Add sales</title>
-    <script>
-    var xmlhttp = new XMLHttpRequest();
-    var url = "show_item.php";
-    var myArr;
-
-    xmlhttp.onreadystatechange = function(){
-        if (this.readyState == 4 && this.status == 200){
-	    myArr = JSON.parse(this.responseText);
-	    more(myArr);
-	}
-    };
-    xmlhttp.open("GET", url, true);
-    xmlhttp.send();
-    
-    var count=1;
-    function more(arr){
-        var out = "Item " + count++ + ": <select name=\"item[id][]\" form=\"sales\" required>";
-	out += "<option value=\"\">Please Select</option>";
-	for (var i=0; i<arr.length; i++){
-	    out+="<option value=\"" + arr[i].itemID + "\">" + arr[i].itemName + "</option>";
-	}
-
-	out+="Amount bought: <input type=\"number\" name=\"item[count][]\" min=\"1\" required>"
-        out+="</select><br />"
-	document.getElementById("forms").innerHTML+=out;
-    }
-
-    function moreItem(){
-        more(myArr);
-    }
-    </script>
+    <script src="more_column.js" defer></script>
 </head>
 
 <body>
-    <h1>Add Sales Detail</h1>
+ <div class = "container">
+	<div class = "1">
+		<h1>People Health Pharmacy</h1>
+		<p id = "inventory_data">Add Sales</p>
+	</div>
+	<nav class="navbar navbar-default">
+	  <div class="container-fluid">
+		<div class="navbar-header">
+		  <a class="navbar-brand" href="../index.html">PHP SRS</a>
+		</div>
+		<ul class="nav navbar-nav">
+		  <li><a href="../index.html">Home</a></li>
+		  <li><a href="../about.html">About Us</a></li>
+		  <li><a href="../contact.html">Contact Us</a></li>
+		  <li><a href="#"></a></li>
+		</ul>
+	  </div>
+	</nav>
 
-    <form action="addSales.php" id="sales" method="POST">
+	<div class="form-group">
+    <form action="http://mercury.ict.swin.edu.au/it000000/formtest.php" id="sales" method="POST"> 
     <fieldset>
         <legend>Sales Detail</legend>
-	<p>Invoice Number: <input type="text" name="invoice" /></p>
-	<p>Sales Date: <input type="date" name ="date" required /></p>
+			<p>Invoice Number: <input type="text" name="invoice" /></p>
+			<p>Sales Date: <input type="date" name ="date" required /></p>
 	<fieldset>
 	    <legend>Sold Item</legend>
-	        <div id="forms">
-		</div>
-		<button onclick="moreItem()">Add more items</button>
+	        <div id="forms"></div>
+			<button onclick="moreItem()">Add more items</button>
 	</fieldset>
     </fieldset>
-    
+
     <input type="reset" />
     <input type="submit" />
     </form>
+	</div>
+
+    </div>
 </body>
 </html>
