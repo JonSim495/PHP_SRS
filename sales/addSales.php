@@ -25,44 +25,47 @@
     	// Check connection
     	if (!$conn) {
     	    die("Connection failed: " . $conn->connect_error);
-    	}
-		
-		// select database
-		mysqli_select_db($conn, "swe30010");
-
-    	//Get next sales ID from auto increment
-		$sql = "SHOW TABLE STATUS WHERE `Name` = 'Sales';";
-    	$result = mysqli_query($conn, $sql);
-    	$data = mysqli_fetch_assoc($result);
-
-    	$salesID = $data['Auto_increment'];
-		
-    	// Add into Sales table
-    	$sql = "INSERT INTO `Sales` (salesID, salesDate, invoice) VALUES($salesID, '$date', '$invoice')";
-
-        if (mysqli_query($conn, $sql)) {
-            //echo "<h1>Record added into Sales table.</h1>";
     	} else {
-    	    echo "Error: $sql <br />" . mysqli_error($conn);
-    	}
+    		// select database
+    		mysqli_select_db($conn, "swe30010");
 
-    	//Add item into Sales Item table
-		for ($i=0; $i<$count; $i++){
-			$sql = "INSERT INTO SalesItem (salesID, itemID, itemCount) VALUES ($salesID, '$itemID[$i]', $itemCount[$i])";
+        	//Get next sales ID from auto increment
+    		$sql = "SHOW TABLE STATUS WHERE `Name` = 'Sales';";
+        	$result = mysqli_query($conn, $sql);
+        	$data = mysqli_fetch_assoc($result);
 
-			if (mysqli_query($conn, $sql)){
-				//echo "<p>Item $itemID[$i] has been added to $salesID</p>";
-			}
-		}
+        	$salesID = $data['Auto_increment'];
+
+        	// Add into Sales table
+        	$sql = "INSERT INTO `Sales` (salesID, salesDate, invoice) VALUES($salesID, '$date', '$invoice')";
+
+            if (mysqli_query($conn, $sql)) {
+                //Add item into Sales Item table
+                $item_count = 0;
+        		for ($i=0; $i<$count; $i++){
+        			$sql = "INSERT INTO SalesItem (salesID, itemID, itemCount) VALUES ($salesID, '$itemID[$i]', $itemCount[$i])";
+
+        			if (mysqli_query($conn, $sql)){
+        				//echo "<p>Item $itemID[$i] has been added to $salesID</p>";
+                        $item_count++;
+        			} else {
+                        echo "Error: $sql <br />" . mysqli_error($conn);
+                    }
+        		}
+
+                if ($item_count == $count){
+            		echo "<div>
+            		<script>
+            				window.alert('Record added successfully!');
+            				window.location.href = 'showSales.html';
+            		</script>
+                    </div>";
+                }
+        	} else {
+        	    echo "Error: $sql <br />" . mysqli_error($conn);
+        	}
+        }
         mysqli_close($conn);
-		echo '<div>';
-		echo "<script>
-				window.alert('Record added successfully!');
-				window.location.href = 'showSales.html';
-		</script>
-		";
-		echo "</div>"
-
     ?>
   </body>
 
