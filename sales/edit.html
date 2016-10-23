@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name = "viewport" content = "width = device - width, initial-scale=1" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="../style/style.css" rel="stylesheet"/>
+    <title>Edit sales</title>
+    <script src="edit.js" defer></script>
+    <script src="more_column.js"></script>
+</head>
+
+<body>
+ <div class = "container">
+	<div class = "1">
+		<h1>People Health Pharmacy</h1>
+		<p id = "inventory_data">Edit Sales</p>
+	</div>
+	<nav class="navbar navbar-default">
+	  <div class="container-fluid">
+		<div class="navbar-header">
+		  <a class="navbar-brand" href="../index.html">PHP SRS</a>
+		</div>
+		<ul class="nav navbar-nav">
+		  <li><a href="../index.html">Home</a></li>
+		  <li><a href="../about.html">About Us</a></li>
+		  <li><a href="../contact.html">Contact Us</a></li>
+		  <li><a href="#"></a></li>
+		</ul>
+	  </div>
+	</nav>
+
+	<div class="form-group">
+    <form action="editSales.php" id="sales" method="POST"> 
+    <fieldset>
+        <legend>Sales Detail</legend>
+            <p>Sales ID: <input type="text" name="salesID" id="salesID" /></p>
+			<p>Invoice Number: <input type="text" name="invoice" id="invoice" /></p>
+			<p>Sales Date: <input type="date" name ="date" id="date" required /></p>
+	<fieldset>
+	    <legend>Sold Item</legend>
+	        <div id="forms"></div>
+			<button onclick="moreItem()">Add more items</button>
+	</fieldset>
+    </fieldset>
+
+    <input type="reset" />
+    <input type="submit" />
+    </form>
+	</div>
+
+    </div>
+</body>
+</html>

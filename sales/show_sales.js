@@ -1,5 +1,5 @@
 var xmlhttp = new XMLHttpRequest();
-var url = "show_sales_ajax.php";
+var url = "show_sales_json.php";
 var myArr;
 xmlhttp.onreadystatechange = function(){
     if (this.readyState == 4 && this.status == 200){
@@ -27,14 +27,14 @@ for (var i=0; i<arr.length; i++){
  // for rowspan purpose
  var name = [], inn = [];
  for(var j=0; j<items.length; j++){
-name.push("<td>" + items[j].itemName + "</td>");
-inn.push("<td>" + items[j].itemCount + "</td>");
-totalAmount += items[j].itemPrice * items[j].itemCount;
+    name.push("<td>" + items[j].itemName + "</td>");
+    inn.push("<td>" + items[j].itemCount + "</td>");
+    totalAmount += items[j].itemPrice * items[j].itemCount;
  }
 
  out += name[0] + inn[0]; //items and amount of purchase
  out += "<td rowspan=\"" + count + "\">" + totalAmount + "</td>";
- out += "<td rowspan=\"" + count + "\"><a href=\"edit.php?id=" + salesID + "\">Edit</a></td>";
+ out += "<td rowspan=\"" + count + "\"><a onclick=\"edit(" + salesID + ") \">Edit</a></td>";
  out += "<td rowspan=\"" + count + "\"><a href=\"delete.php?id=" + salesID + "\" onclick=\"return confirm('Are you sure?');\">Delete</a></td>";
 
  if (count>1){
@@ -49,4 +49,8 @@ totalAmount += items[j].itemPrice * items[j].itemCount;
    document.getElementById("sales").innerHTML = out;
 }
 
-//      window.onload = go;
+// to parse into edit
+function edit(n){
+    sessionStorage.salesID = n;
+    window.location.href = "edit.html";
+}
