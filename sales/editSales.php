@@ -6,10 +6,12 @@
     $itemCount = $_POST["count"];
     $salesID = $_POST["salesID"];
     $count = count($itemID);
+    
     // authentication to the database
     $servername = "localhost";
     $username = "";
     $password = "";
+    
     //Create connection
     $conn = mysqli_connect($servername, $username, $password);
     // Check connection
