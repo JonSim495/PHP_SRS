@@ -6,13 +6,26 @@ function populate(arr){
     document.getElementById("date").value = salesdate;
     document.getElementById("invoice").value = invoice;
 
-    // TODO: populate items
+    var items = arr.saleItems;
+    // make things columns for all items
+    for (var i=0; i<items.length-1; i++)
+        moreItem();
+    
+    var selects = document.getElementsByTagName("select");
+    var counts = document.getElementsByTagName("input"); 
+    
+    // counts are from 3rd input onwards
+    for (var i=0; i<items.length; i++){
+        selects[i].value = items[i].itemID;
+        counts[i+3].value = items[i].itemCount;
+    }
 }
 
 // initialisation
 window.onload = function(){
     if (sessionStorage.length > 0){
         document.getElementById("salesID").value = sessionStorage.salesID;
+        document.getElementById("salesID").readOnly = true;
 
         // take item from edit_fetch
         var http = new XMLHttpRequest();

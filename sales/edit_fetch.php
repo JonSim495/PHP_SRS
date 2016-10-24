@@ -30,9 +30,26 @@ while ($row = mysqli_fetch_assoc($result)){
     $flag = true;
 }
 
-// TODO: enquiry for items in that particular sales
-$output .= "]}";
+// enquire particular item from that particular sales
+$sql = "SELECT DISTINCT I.itemID, SI.itemCount
+        FROM `swe30010`.`SalesItem` SI, `swe30010`.`Inventory` I
+        WHERE salesID=$id AND I.itemID=SI.itemID";
+$result = mysqli_query($conn, $sql);
 
+$output .= "], \"saleItems\":[";
+$flag=false;
+while ($row = mysqli_fetch_assoc($result)){
+    if ($flag){
+        $output .= ",";
+    }
+
+    $output .= '{"itemID":"'.$row["itemID"].'",';
+    $output .= '"itemCount":"'.$row["itemCount"].'"}';
+
+    $flag = true;
+}
+
+$output .= "]}";
 echo $output;
 //remember to close connection
 mysqli_close($conn); 
