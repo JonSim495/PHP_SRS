@@ -5,7 +5,7 @@
   header("Content-Type: application/json; charset=UTF-8");
 
   $servername = "localhost";
-  $username = "";  // fill in authentication data, starred on slack
+  $username = "";
   $password = "";
 
   // Create connection
