@@ -9,7 +9,6 @@
         <link href="../style/style.css" rel="stylesheet"/> 
         <title>Monthly report</title>
         <script src="selectMonth.js"></script>
-        <script src="showData.js"></script>
     </head>
     <body>
 
@@ -33,13 +32,37 @@
               </div>
             </nav>
 
-            <h2>Select report for month:</h2>
-            <select id="select-month"></select>
+            <p>Select report for month:
+                <select id="select-month"></select>
+            </p>
 
-            <div style="height: 70%; overflow-y:auto;">
+            <div style="height: 40%; overflow-y:auto;">
+            <h3>List of sales</h3>
             <table border="1em" class="table table-bordered table-striped table-hover">
-                <thead></thead>
-                <tbody id="showData"></tbody>
+                <thead>
+                    <tr>
+                        <th>Sales ID</th>
+                        <th>Sales Item</th>
+                        <th>Sold Amount</th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+                <tbody id="showSalesData"></tbody>
+            </table>
+            </div>
+
+            <div style="height: 40%; overflow-y:auto;">
+            <h3>Items sold</h3>
+            <table border="1em" class="table table-bordered table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>Item ID</th>
+                        <th>Item Name</th>
+                        <th>Sold Amount</th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+                <tbody id="showItemData"></tbody>
             </table>
             </div>
         </div>
