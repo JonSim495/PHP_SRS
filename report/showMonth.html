@@ -8,6 +8,8 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <link href="../style/style.css" rel="stylesheet"/> 
         <title>Monthly report</title>
+        <script src="selectMonth.js"></script>
+        <script src="showData.js"></script>
     </head>
     <body>
 
@@ -15,7 +17,7 @@
         <div class = "container">
             <div>
                 <h1>People Health Pharmacy</h1>
-                <p id = "home">Reporting System</p>
+                <p id = "home">Monthly Report</p>
             </div>
             <nav class="navbar navbar-default">
               <div class="container-fluid">
@@ -31,7 +33,15 @@
               </div>
             </nav>
 
-            <!-- body goes here -->
+            <h2>Select report for month:</h2>
+            <select id="select-month"></select>
+
+            <div style="height: 70%; overflow-y:auto;">
+            <table border="1em" class="table table-bordered table-striped table-hover">
+                <thead></thead>
+                <tbody id="showData"></tbody>
+            </table>
+            </div>
         </div>
     </body>
 </html>
