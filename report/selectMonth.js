@@ -11,6 +11,7 @@ function populateSelect(arr){
     var options = document.createElement("option");
     options.value = "";
     options.appendChild(document.createTextNode("Select Month"));
+    options.setAttribute("id", "remove");
     document.getElementById("select-month").appendChild(options);
 
     for (var i=0; i<arr.length; i++){
@@ -59,8 +60,17 @@ function ajaxToJson(date, callback){
 
 }
 
-/*Find the total amount of money gained for that id*/
-function total(id, arr){
+/*
+*   Input parameter: id - sales ID that is to be matched
+*                    arr - array of sales items, which includes salesID
+*                    
+*   Output: total - Number of item in arr which salesID matches id in input
+*   
+*   Functionality: Find the number of item in arr which salesID matches id in input,
+*                  used for rowspan purpose
+*   
+*/
+function total_price(id, arr){
     var total = 0;
     for (var i=0; i<arr.length; i++){
         if (id == arr[i].salesID){
@@ -70,7 +80,16 @@ function total(id, arr){
     return total;
 }
 
-/* Find total number of salesID within array, for rowspan purpose */
+/*
+*   Input parameter: id - sales ID that is to be matched
+*                    arr - array of sales items, which includes salesID
+*                    
+*   Output: total - Number of item in arr which salesID matches id in input
+*   
+*   Functionality: Find the number of item in arr which salesID matches id in input,
+*                  used for rowspan purpose
+*   
+*/
 function row(id, arr){
     var count = 0;
     for (var i=0; i<arr.length; i++){
@@ -89,6 +108,9 @@ function row(id, arr){
                    request in server and populate the tables.
 */
 function showData(){
+    if (document.getElementById("remove")){
+        document.getElementById("remove").remove();
+    }
     var date = document.getElementById("select-month").value;
 
     ajaxToJson(date,
@@ -111,6 +133,9 @@ function showData(){
             var salesArr = arr.sales;
             var salesItemArr = arr.salesItem;
 
+            // initialise monthly total:
+            var monthly = 0;
+
             for(var i=0; i<salesArr.length; i++){
                 // find rowspan for this salesID
                 var rowspan = row(salesArr[i].salesID, salesItemArr);
@@ -126,7 +151,9 @@ function showData(){
                 var rest;
 
                 // find the total amount of the sales
-                var amount = total(salesArr[i].salesID, salesItemArr);
+                var amount = total_price(salesArr[i].salesID, salesItemArr);
+                monthly += amount;
+
                 //append first row of sales item
                 for (var j=0; j<salesItemArr.length; j++){
                     if (salesItemArr[j].salesID == salesArr[i].salesID){
@@ -168,8 +195,24 @@ function showData(){
                     }
                 }
             }
+
+            // Display total amount
+            var total_row = document.createElement("tr");
+            total_row.setAttribute("style", "text-align:center;font-weight:bold;vertical-align:middle");
+            
+            var total_th = document.createElement("th");
+            total_th.appendChild(document.createTextNode("Total amount: "));
+            total_th.setAttribute("colspan", 3);
+            total_row.appendChild(total_th);
+            
+            var am_td = document.createElement("td");
+            am_td.appendChild(document.createTextNode(monthly));
+            total_row.appendChild(am_td);
+
+            salesTable.appendChild(total_row);
+
+            // TODO: item sold table
         }
-        // TODO: item sold table
     );
 }
 
