@@ -37,55 +37,63 @@
         }
     } else {
         // TODO: when date is available, show the sales of the month
-        echo '{
-            "sales":[
-            {
-                "salesID":"1",
-                "invoice":"INV0001",
-                "date":"2012-01-10"
-            },
-            {
-                "salesID":"2",
-                "invoice":"INV0002",
-                "date":"2012-01-12"
-            }
+        echo '
+        
+{
+    "sales":[
+    {
+        "salesID":"1",
+        "invoice":"INV0001",
+        "date":"2012-01-10"
+    },
+    {
+        "salesID":"2",
+        "invoice":"INV0002",
+        "date":"2012-01-12"
+    }
 
-            ],
-            "salesItem":[
-            {
-                "salesID": "1",
-                "salesCount": "1",
-                "itemName": "Rivoltri",
-                "itemPrice": "12.30"
-            },
-            {
-                "salesID": "1",
-                "salesCount": "1",
-                "itemName": "Apani",
-                "itemPrice": "12.30"
-            },
-            {
-                "salesID": "2",
-                "salesCount": "2",
-                "itemName": "Rivoltri",
-                "itemPrice": "12.30"
-            },
-            {
-                "salesID": "2",
-                "salesCount": "1",
-                "itemName": "Apani",
-                "itemPrice": "12.30"
-            },
-            {
-                "salesID": "2",
-                "salesCount": "1",
-                "itemName": "Another item",
-                "itemPrice": "12.30"
-            }
-            ]
+    ],
+    "salesItem":[
+    {
+        "salesID": "1",
+        "salesCount": "1",
+        "itemName": "Rivoltri",
+        "itemPrice": "12.30",
+        "itemID":"1"
+    },
+    {
+        "salesID": "1",
+        "salesCount": "1",
+        "itemName": "Apani",
+        "itemPrice": "12.30",
+        "itemID":"2"
+    },
+    {
+        "salesID": "2",
+        "salesCount": "2",
+        "itemName": "Rivoltri",
+        "itemPrice": "12.30",
+        "itemID":"2"
+    },
+    {
+        "salesID": "2",
+        "salesCount": "1",
+        "itemName": "Apani",
+        "itemPrice": "12.30",
+        "itemID":"2"
+        
+    },
+    {
+        "salesID": "2",
+        "salesCount": "5",
+        "itemName": "Another item",
+        "itemPrice": "32.30",
+        "itemID":"3"
+    }
+    ]
 
-        }
-';
+}
+        ';
     }
 
     mysqli_close($conn);

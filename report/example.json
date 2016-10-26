@@ -17,31 +17,37 @@
         "salesID": "1",
         "salesCount": "1",
         "itemName": "Rivoltri",
-        "itemPrice": "12.30"
+        "itemPrice": "12.30",
+        "itemID":"1"
     },
     {
         "salesID": "1",
         "salesCount": "1",
         "itemName": "Apani",
-        "itemPrice": "12.30"
+        "itemPrice": "12.30",
+        "itemID":"2"
     },
     {
         "salesID": "2",
         "salesCount": "2",
         "itemName": "Rivoltri",
-        "itemPrice": "12.30"
+        "itemPrice": "12.30",
+        "itemID":"2"
     },
     {
         "salesID": "2",
         "salesCount": "1",
         "itemName": "Apani",
-        "itemPrice": "12.30"
+        "itemPrice": "12.30",
+        "itemID":"2"
+        
     },
     {
         "salesID": "2",
         "salesCount": "1",
         "itemName": "Another item",
-        "itemPrice": "12.30"
+        "itemPrice": "12.30",
+        "itemID":"2"
     }
     ]
 

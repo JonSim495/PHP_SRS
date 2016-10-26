@@ -63,17 +63,18 @@ function ajaxToJson(date, callback){
 function total(id, arr){
     var total = 0;
     for (var i=0; i<arr.length; i++){
-        if (id = arr[i].salesID)
-            total += arr[i].itemCount * arr[i].itemPrice;
+        if (id == arr[i].salesID){
+            total += arr[i].salesCount* arr[i].itemPrice;
+        }
     }
     return total;
 }
 
 /* Find total number of salesID within array, for rowspan purpose */
-function rowspan(id, arr){
+function row(id, arr){
     var count = 0;
     for (var i=0; i<arr.length; i++){
-        if (id = arr[i].salesID)
+        if (id == arr[i].salesID)
             count++;
     }
     return count;
@@ -97,17 +98,24 @@ function showData(){
             var salesTable = document.getElementById("showSalesData");
             var itemTable = document.getElementById("showItemData");
 
-            // get sales id, item arr
+            // clear tables
+            while(salesTable.firstChild){
+                salesTable.removeChild(salesTable.firstChild);
+            }
+
+            while(itemTable.firstChild){
+                itemTable.removeChild(itemTable.firstChild);
+            }
+
+            // get sales array, item arr
             var salesArr = arr.sales;
             var salesItemArr = arr.salesItem;
-            console.log(salesArr);
-            console.log(salesItemArr);
 
             for(var i=0; i<salesArr.length; i++){
                 // find rowspan for this salesID
-                var rowspan = rowspan(salesArr[i].salesID, salesItemArr);
+                var rowspan = row(salesArr[i].salesID, salesItemArr);
 
-                // append first row
+                // append first row 
                 var tr = document.createElement("tr");
                 var salesid_td = document.createElement("td");
                 salesid_td.appendChild(document.createTextNode(salesArr[i].salesID));
@@ -127,7 +135,7 @@ function showData(){
                         tr.appendChild(firstSales_td);
 
                         var firstCount_td = document.createElement("td");
-                        firstCount_td.appendChild(document.createTextNode(salesItemArr[j].itemCount));
+                        firstCount_td.appendChild(document.createTextNode(salesItemArr[j].salesCount));
                         tr.appendChild(firstCount_td);
 
                         var amount_td = document.createElement("td");
@@ -142,28 +150,27 @@ function showData(){
 
                 // append first row into tbody
                 salesTable.appendChild(tr);
-                for (;rest<arr[i].length; rest++){
-                    if (salesItemArr[rest].salesID == salesArr[i].salesID){
-                        var tr = document.createElement("tr");
+
+                for (var j = rest+1; j<salesItemArr.length; j++){
+                    if (salesItemArr[j].salesID == salesArr[i].salesID){
+                        var tr2 = document.createElement("tr");
 
                         var firstSales_td = document.createElement("td");
-                        firstSales_td.appendChild(document.createTextNode(salesItemArr[rest].itemName));
-                        tr.appendChild(firstSales_td);
+                        firstSales_td.appendChild(document.createTextNode(salesItemArr[j].itemName));
+                        tr2.appendChild(firstSales_td);
 
                         var firstCount_td = document.createElement("td");
-                        firstCount_td.appendChild(document.createTextNode(salesItemArr[rest].itemCount));
-                        tr.appendChild(firstCount_td);
+                        firstCount_td.appendChild(document.createTextNode(salesItemArr[j].salesCount));
+                        tr2.appendChild(firstCount_td);
 
                         // append this row into table
-                        salesTable.appendChild(tr);
+                        salesTable.appendChild(tr2);
+                    }
                 }
             }
-
-
-
-            //TODO: show the data of arr in table
         }
-    });
+        // TODO: item sold table
+    );
 }
 
 // Initialisation of progs
@@ -175,3 +182,4 @@ window.onload = function() {
         }
     );
 }
+
