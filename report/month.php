@@ -17,7 +17,7 @@
             echo "[]";
             die("Connection failed: " . $conn->connect_error);
         } else {
-            $sql = "SELECT DISTINCT MONTH(salesDate) AS month, YEAR(salesDate) AS year FROM `swe30010`.`Sales`";
+            $sql = "SELECT DISTINCT MONTH(salesDate) AS month, YEAR(salesDate) AS year FROM `swe30010`.`Sales` ORDER BY month ASC, year ASC";
             $result = mysqli_query($conn, $sql);
 
             // start of json
@@ -37,63 +37,42 @@
         }
     } else {
         // TODO: when date is available, show the sales of the month
-        echo '
+        $md = explode("-", $date);
+        $sql = "SELECT * FROM `swe30010`.`Sales` WHERE MONTH(salesDate)=$md[1] AND YEAR(salesDate)=$md[0]";
+        $result = mysqli_query($conn, $sql);
         
-{
-    "sales":[
-    {
-        "salesID":"1",
-        "invoice":"INV0001",
-        "date":"2012-01-10"
-    },
-    {
-        "salesID":"2",
-        "invoice":"INV0002",
-        "date":"2012-01-12"
-    }
+        // start of json
+        $output = '{"sales":[';
+        $output2 = '[';
+        while ($row = mysqli_fetch_assoc($result)){
+            if ($output != '{"sales":['){
+                $output .= ',';
+            }
+            
+            // sales ID
+            $output .= '{"salesID":"' . $row["salesID"] . '",';
+            $output .= '"invoice":"' . $row["invoice"] . '",';
+            $output .= '"date":"' . $row["salesDate"] . '"}';
 
-    ],
-    "salesItem":[
-    {
-        "salesID": "1",
-        "salesCount": "1",
-        "itemName": "Rivoltri",
-        "itemPrice": "12.30",
-        "itemID":"1"
-    },
-    {
-        "salesID": "1",
-        "salesCount": "1",
-        "itemName": "Apani",
-        "itemPrice": "12.30",
-        "itemID":"2"
-    },
-    {
-        "salesID": "2",
-        "salesCount": "2",
-        "itemName": "Rivoltri",
-        "itemPrice": "12.30",
-        "itemID":"2"
-    },
-    {
-        "salesID": "2",
-        "salesCount": "1",
-        "itemName": "Apani",
-        "itemPrice": "12.30",
-        "itemID":"2"
-        
-    },
-    {
-        "salesID": "2",
-        "salesCount": "5",
-        "itemName": "Another item",
-        "itemPrice": "32.30",
-        "itemID":"3"
-    }
-    ]
+            // for each sales ID, find its sales item detail
+            $id = $row["salesID"];
+            $sql2 = "SELECT SI.salesID AS id, SI.itemCount AS count, I.itemName AS name, I.itemPrice as price, SI.itemID as item FROM `swe30010`.`SalesItem` SI, `swe30010`.`Inventory` I WHERE SI.salesID=$id AND SI.itemID=I.itemID";
+            $result2 = mysqli_query($conn, $sql2);
 
-}
-        ';
+            while($row2 = mysqli_fetch_assoc($result2)){
+                if ($output2!='['){
+                    $output2 .= ',';
+                }
+                $output2 .= '{"salesID":"' . $row2["id"] . '",';
+                $output2 .= '"salesCount":"' . $row2["count"] . '",';
+                $output2 .= '"itemName":"' . $row2["name"] . '",';
+                $output2 .= '"itemPrice":"' . $row2["price"] . '",';
+                $output2 .= '"itemID":"' . $row2["item"] . '"}';
+            }
+        }
+        $output .= '],"salesItem":' . $output2;
+        $output .= ']}';
+        echo $output;
     }
 
     mysqli_close($conn);
