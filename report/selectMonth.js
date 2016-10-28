@@ -229,6 +229,11 @@ function showData(){
                 };
                 sales = add(sale, sales);
             }
+
+            // sort sales table by itemID
+            sales.sort(function(a,b){
+                return parseInt(a.itemID) - parseInt(b.itemID);
+            });
             
 
             // Display sales in table
