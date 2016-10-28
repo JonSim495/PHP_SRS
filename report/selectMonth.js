@@ -211,10 +211,78 @@ function showData(){
 
             salesTable.appendChild(total_row);
 
-            // TODO: item sold table
+            // Store items in sales
+            var big = salesItemArr.length;
+            var sales = []; 
+
+            for (var i=0; i<salesItemArr.length; i++){
+                var sale = {
+                    itemID : salesItemArr[i].itemID,
+                    itemName : salesItemArr[i].itemName,
+                    salesCount : parseInt(salesItemArr[i].salesCount),
+                    itemPrice : salesItemArr[i].itemPrice,
+                };
+                console.log(sales);
+                sales = add(sale, sales);
+            }
+            console.log(sales);
+            
+
+            // Display sales in table
+            for (var i=0; i<sales.length; i++){
+                var tr = document.createElement("tr");
+
+                var id = document.createElement("td");
+                id.appendChild(document.createTextNode(sales[i].itemID));
+                tr.appendChild(id);
+                
+                var name = document.createElement("td");
+                name.appendChild(document.createTextNode(sales[i].itemName));
+                tr.appendChild(name);
+
+                var count = document.createElement("td");
+                count.appendChild(document.createTextNode(sales[i].salesCount));
+                tr.appendChild(count);
+
+                var total = document.createElement("td");
+                var cc = sales[i].salesCount * sales[i].itemPrice;
+                total.appendChild(document.createTextNode(cc));
+                tr.appendChild(total);
+
+                itemTable.appendChild(tr);
+            }
         }
     );
 }
+
+/*
+   Input parameter: 
+*       sale - sale object, 
+*       sales: array of sale object
+*   Output parameter: 
+*       Updated array of sale object
+*   Functionality:
+*       Search through sales to see if there is any same item in sales, if there is increment of
+*       saleCount; if there isn't, add it into sales.
+*/
+function add(sale, sales){
+    if (sales.length == 0){
+        sales.push(sale);
+        return sales;
+    }else{
+        for (var i=0; i<sales.length; i++){
+            if(sale.itemID == sales[i].itemID){
+                // same item found, add to count
+                sales[i].salesCount += parseInt(sale.salesCount);
+                return sales;
+            }
+        }
+        // No such item in sales, add to sales
+        sales.push(sale);
+        return sales;
+    }
+}
+
 
 // Initialisation of progs
 window.onload = function() {
