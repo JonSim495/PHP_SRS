@@ -147,6 +147,11 @@ function showData(){
                 salesid_td.setAttribute("rowspan", rowspan);
                 tr.appendChild(salesid_td);
 
+                var date_td = document.createElement("td");
+                date_td.appendChild(document.createTextNode(salesArr[i].date));
+                date_td.setAttribute("rowspan", rowspan);
+                tr.appendChild(date_td);
+
                 // number of position after first row of sales item
                 var rest;
 
@@ -202,7 +207,7 @@ function showData(){
             
             var total_th = document.createElement("th");
             total_th.appendChild(document.createTextNode("Total amount: "));
-            total_th.setAttribute("colspan", 3);
+            total_th.setAttribute("colspan", 4);
             total_row.appendChild(total_th);
             
             var am_td = document.createElement("td");
@@ -222,10 +227,8 @@ function showData(){
                     salesCount : parseInt(salesItemArr[i].salesCount),
                     itemPrice : salesItemArr[i].itemPrice,
                 };
-                console.log(sales);
                 sales = add(sale, sales);
             }
-            console.log(sales);
             
 
             // Display sales in table
