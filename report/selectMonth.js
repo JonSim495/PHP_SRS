@@ -4,6 +4,7 @@ var sales = [];
 var month_report = [];
 
 function exports(item){
+    var date = document.getElementById("select-month").value;
     if (item == "item"){
     // resource: http://halistechnology.com/2015/05/28/use-javascript-to-export-your-data-as-csv/
 		var result, ctr, keys, columnDelimiter, lineDelimiter, data;
@@ -29,7 +30,7 @@ function exports(item){
             });
             result += lineDelimiter;
         });
-        downloads(result, "month_report.csv");
+        downloads(result, "Item Report "+date+".csv");
     } else if (item == "month") {
     // resource: http://halistechnology.com/2015/05/28/use-javascript-to-export-your-data-as-csv/
 		var result, ctr, keys, columnDelimiter, lineDelimiter, data;
@@ -39,13 +40,13 @@ function exports(item){
         columnDelimiter = month_report.columnDelimiter || ',';
         lineDelimiter = month_report.lineDelimiter || '\n';
 
-        keys = Object.keys(item_export[0]);
+        keys = Object.keys(month_report[0]);
 
         result = '';
         result += keys.join(columnDelimiter);
         result += lineDelimiter;
 
-        sales.forEach(function(item) {
+        month_report.forEach(function(item) {
             ctr = 0;
             keys.forEach(function(key) {
                 if (ctr > 0) result += columnDelimiter;
@@ -55,7 +56,8 @@ function exports(item){
             });
             result += lineDelimiter;
         });
-        downloads(result, "month_report.csv");
+        console.log(result);
+        downloads(result, "Monthly Report " + date + ".csv");
     }
 }
 
@@ -194,7 +196,9 @@ function showData(){
             var salesTable = document.getElementById("showSalesData");
             var itemTable = document.getElementById("showItemData");
 
-            // clear tables
+            // reset everything
+            sales = [];
+            month_report = [];
             while(salesTable.firstChild){
                 salesTable.removeChild(salesTable.firstChild);
             }
@@ -206,6 +210,9 @@ function showData(){
             // get sales array, item arr
             var salesArr = arr.sales;
             var salesItemArr = arr.salesItem;
+
+            // fill in month_report
+            // TODO: fill in month_report
 
             // initialise monthly total:
             var monthly = 0;
@@ -236,6 +243,18 @@ function showData(){
                 //append first row of sales item
                 for (var j=0; j<salesItemArr.length; j++){
                     if (salesItemArr[j].salesID == salesArr[i].salesID){
+                        // fill in monthly report 
+                        var sale = {
+                            "Sales ID" : parseInt(salesArr[i].salesID),
+                            "Date" : salesArr[i].date,
+                            "Sales Item": salesItemArr[j].itemName,
+                            "Sold Amount" : parseInt(salesItemArr[j].salesCount),
+                            "Amount": salesItemArr[j].salesCount * salesItemArr[j].itemPrice
+                        };
+                        console.log(sale);
+                        month_report.push(sale);
+
+                        // create tables
                         var firstSales_td = document.createElement("td");
                         firstSales_td.appendChild(document.createTextNode(salesItemArr[j].itemName));
                         tr.appendChild(firstSales_td);
@@ -259,6 +278,19 @@ function showData(){
 
                 for (var j = rest+1; j<salesItemArr.length; j++){
                     if (salesItemArr[j].salesID == salesArr[i].salesID){
+
+                        // fill in monthly report 
+                        var sale = {
+                            "Sales ID" : parseInt(salesArr[i].salesID),
+                            "Date" : salesArr[i].date,
+                            "Sales Item": salesItemArr[j].itemName,
+                            "Sold Amount" : parseInt(salesItemArr[j].salesCount),
+                            "Amount": salesItemArr[j].salesCount * salesItemArr[j].itemPrice
+                        };
+                        console.log(sale);
+                        month_report.push(sale);
+
+                        // create table
                         var tr2 = document.createElement("tr");
 
                         var firstSales_td = document.createElement("td");
@@ -292,14 +324,13 @@ function showData(){
 
             // Store items in sales
             var big = salesItemArr.length;
-            sales = [];
 
             for (var i=0; i<salesItemArr.length; i++){
                 var sale = {
-                    itemID : salesItemArr[i].itemID,
-                    itemName : salesItemArr[i].itemName,
-                    salesCount : parseInt(salesItemArr[i].salesCount),
-                    itemPrice : salesItemArr[i].itemPrice,
+                    "Item ID" : salesItemArr[i].itemID,
+                    "Item Name" : salesItemArr[i].itemName,
+                    "Sold Amount" : parseInt(salesItemArr[i].salesCount),
+                    "Sale amount" : salesItemArr[i].itemPrice,
                 };
                 sales = add(sale, sales);
             }
