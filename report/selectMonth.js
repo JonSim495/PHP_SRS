@@ -251,7 +251,6 @@ function showData(){
                             "Sold Amount" : parseInt(salesItemArr[j].salesCount),
                             "Amount": salesItemArr[j].salesCount * salesItemArr[j].itemPrice
                         };
-                        console.log(sale);
                         month_report.push(sale);
 
                         // create tables
@@ -287,8 +286,6 @@ function showData(){
                             "Sold Amount" : parseInt(salesItemArr[j].salesCount),
                             "Amount": salesItemArr[j].salesCount * salesItemArr[j].itemPrice
                         };
-                        console.log(sale);
-                        month_report.push(sale);
 
                         // create table
                         var tr2 = document.createElement("tr");
@@ -330,7 +327,7 @@ function showData(){
                     "Item ID" : salesItemArr[i].itemID,
                     "Item Name" : salesItemArr[i].itemName,
                     "Sold Amount" : parseInt(salesItemArr[i].salesCount),
-                    "Sale amount" : salesItemArr[i].itemPrice,
+                    "Sale Amount" : salesItemArr[i].itemPrice * salesItemArr[i].salesCount
                 };
                 sales = add(sale, sales);
             }
@@ -346,19 +343,19 @@ function showData(){
                 var tr = document.createElement("tr");
 
                 var id = document.createElement("td");
-                id.appendChild(document.createTextNode(sales[i].itemID));
+                id.appendChild(document.createTextNode(sales[i]["Item ID"]));
                 tr.appendChild(id);
                 
                 var name = document.createElement("td");
-                name.appendChild(document.createTextNode(sales[i].itemName));
+                name.appendChild(document.createTextNode(sales[i]["Item Name"]));
                 tr.appendChild(name);
 
                 var count = document.createElement("td");
-                count.appendChild(document.createTextNode(sales[i].salesCount));
+                count.appendChild(document.createTextNode(sales[i]["Sold Amount"]));
                 tr.appendChild(count);
 
                 var total = document.createElement("td");
-                var cc = sales[i].salesCount * sales[i].itemPrice;
+                var cc = sales[i]["Sale Amount"];
                 total.appendChild(document.createTextNode(cc));
                 tr.appendChild(total);
 
@@ -384,9 +381,9 @@ function add(sale, sales){
         return sales;
     }else{
         for (var i=0; i<sales.length; i++){
-            if(sale.itemID == sales[i].itemID){
+            if(sale["Item ID"] == sales[i].itemID){
                 // same item found, add to count
-                sales[i].salesCount += parseInt(sale.salesCount);
+                sales[i].salesCount += parseInt(sale["Sold Amount"]);
                 return sales;
             }
         }
