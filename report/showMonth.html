@@ -38,6 +38,7 @@
 
             <div style="height: 40%; overflow-y:auto;">
             <h3>List of sales</h3>
+            <button onclick='exports("month")'>Export to CSV</button>
             <table border="1em" class="table table-bordered table-striped table-hover" id="sales-table">
                 <thead>
                     <tr>
@@ -51,9 +52,13 @@
                 <tbody id="showSalesData"></tbody>
             </table>
             </div>
+            <hr />
+            <br />
+            <hr />
 
             <div style="height: 40%; overflow-y:auto;">
             <h3>Items sold</h3>
+            <button onclick='exports("item")'>Export to CSV</button>
             <table border="1em" class="table table-bordered table-striped table-hover">
                 <thead>
                     <tr>
