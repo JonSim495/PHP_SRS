@@ -2,6 +2,7 @@ body {
     background-color: aliceblue;
     background-image: url("../images/capture_01.jpg");
 }
+
 .container {
     height: auto;
     box-shadow: 3px 3px 3px rgba(0, 0, 0, .5);
@@ -9,7 +10,7 @@ body {
 }
 
 .navbar {
-    width: 1140px;
+    width: auto;
 }
 
 #showall {
