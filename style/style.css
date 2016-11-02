@@ -3,7 +3,7 @@ body {
     background-image: url("../images/capture_01.jpg");
 }
 .container {
-    height: 1070px;
+    height: auto;
     box-shadow: 3px 3px 3px rgba(0, 0, 0, .5);
     background-color: white;
 }
