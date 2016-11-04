@@ -334,7 +334,7 @@ function showData(){
 
             // sort sales table by itemID
             sales.sort(function(a,b){
-                return parseInt(a.itemID) - parseInt(b.itemID);
+                return parseInt(a["Item ID"]) - parseInt(b["Item ID"]);
             });
             
 
@@ -381,9 +381,9 @@ function add(sale, sales){
         return sales;
     }else{
         for (var i=0; i<sales.length; i++){
-            if(sale["Item ID"] == sales[i].itemID){
+            if(sale["Item ID"] == sales[i]["Item ID"]){
                 // same item found, add to count
-                sales[i].salesCount += parseInt(sale["Sold Amount"]);
+                sales[i]["Sold Amount"] += parseInt(sale["Sold Amount"]);
                 return sales;
             }
         }
